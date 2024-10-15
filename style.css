@@ -2,14 +2,39 @@ html,
 body {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
-table,th,td {
-    border: 1px solid black;
-    border-collapse: collapse;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    height: 50px;
+    padding: 15px;
 }
 
-table {
-    width: 100%;
-    /* table-layout: fixed; */
+.newBook {
+    width: 100px;
+    height: 40px;
+}
+
+.libraryContainer {
+    background-color: lightblue;
+    height: 430px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    gap: 10px;
+}
+
+.book {
+    width: 140px;
+    height: 200px;
+    background-color: white;
+    border-radius: 5px;
 }

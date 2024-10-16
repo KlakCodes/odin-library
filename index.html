@@ -16,6 +16,31 @@
     <div class="libraryContainer">
         
     </div>
+    <div class="footer">Made by KlakCodes</div>
+    <dialog>
+        <button class="closeDialog">x</button>
+        <form id="new_book_form" action="https://httpbin.org/post" method="post">
+            <div class="form-field">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-field">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="pages">Number of pages</label>
+                <input type="number" id="pages" name="pages">
+            </div>
+            <div class="form-field-checkbox">
+                <label for="read">Read</label>
+                <input type="checkbox" id="read" name="read">
+            </div>
+        </form>
+        <button class="newBook" type="submit" form="new-book-form">Submit</button>
+    </dialog>
 </body>
 <script src="scripts.js"></script>
 </html>

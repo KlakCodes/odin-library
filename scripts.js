@@ -16,38 +16,16 @@ function Book(title, author, pages, read) {
     };
 }
 
-function addBookToLibrary() {
-
-}
-
-// TEST 1 START
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, false);
 const ofMiceAndMen = new Book('Of Mice and Men', 'John Steinbeck', 144, true);
 const animalFarm = new Book('Animal Farm', 'George Orwell', 176, true);
-const hamlet = new Book('Hamlet', 'Shakespeare', 192, false)
+const hamlet = new Book('Hamlet', 'Shakespeare', 192, false);
 console.log(theHobbit.info());
 
 myLibrary.push(theHobbit);
 myLibrary.push(ofMiceAndMen);
 myLibrary.push(animalFarm);
 myLibrary.push(hamlet);
-
-// function displayLibrary() {
-//     var table = document.querySelector("table");
-
-//     myLibrary.forEach(value => {
-//         var row = table.insertRow();
-//         row.insertCell(0).innerHTML = value.title;
-//         row.insertCell(1).innerHTML = value.author;
-//         row.insertCell(2).innerHTML = value.pages;
-//         row.insertCell(3).innerHTML = value.read;
-//     });
-// }
-
-// displayLibrary();
-// TEST 1 END
-
-// TEST 2 START
 
 function displayLibrary() {
     const library = document.querySelector(".libraryContainer");    
@@ -60,5 +38,20 @@ function displayLibrary() {
     })
 }
 
+function addBookToLibrary() {
+
+}
+
 displayLibrary();
-// TEST 2 END
+
+const newBook = document.querySelector('.newBook');
+const closeDialog = document.querySelector('.closeDialog');
+const dialog = document.querySelector('dialog');
+
+newBook.addEventListener('click', () => {
+    dialog.showModal();
+})
+
+closeDialog.addEventListener('click', () => {
+    dialog.close();
+})

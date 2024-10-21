@@ -38,18 +38,38 @@ function displayLibrary() {
     })
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, read) {
+    const library = document.querySelector(".libraryContainer");
+    var newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
 
+    const div = document.createElement("div");
+    div.classList.toggle("book");
+    div.textContent = `${newBook.title}\n${newBook.author}\n${newBook.pages}`;
+    library.appendChild(div);
+
+    dialog.close();
 }
 
 displayLibrary();
 
-const newBook = document.querySelector('.newBook');
+const newBook = document.querySelector('#new');
 const closeDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
+const submitBook = document.querySelector('#submit');
 
 newBook.addEventListener('click', () => {
     dialog.showModal();
+})
+
+submitBook.addEventListener('click', function(event) {
+    event.preventDefault();
+    var title = document.querySelector('#title').value;
+    var author = document.querySelector('#author').value;
+    var pages = document.querySelector('#pages').value;
+    var read = document.querySelector('#read').value;
+    addBookToLibrary(title, author, pages, read);
+    console.log("Added");
 })
 
 closeDialog.addEventListener('click', () => {

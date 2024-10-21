@@ -54,7 +54,7 @@ body {
     font-size: 14px;
 }
 
-/* dialog {
+dialog[open] {
     border-style: none;
     border-radius: 10px;
     width: 400px;
@@ -62,11 +62,19 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 1px 1px 5px 0.5px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop {
+    background-color: rgba(255,0,0,0.25);
+    backdrop-filter: blur(5px);
 }
 
 .closeDialog {
-    border: 1px solid black;
-    background-color: white;
+    background-color: #FF6961;
+    color: white;
+    font-weight: 600;
+    border-style: none;
     border-radius: 5px;
     width: 30px;
     height: 30px;
@@ -102,4 +110,4 @@ input {
 input[type=checkbox] {
     transform: scale(1.4);
     accent-color: green;
-} */
+}

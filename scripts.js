@@ -31,11 +31,28 @@ function displayLibrary(array) {
 
     library.replaceChildren();
     array.forEach(book => {
-        const div = document.createElement("div");
-        div.classList.toggle("book");
-        div.textContent = `${book.title}\n${book.author}\n${book.pages}
-            \n${array.indexOf(book)}`;
-        library.appendChild(div);
+        const bookCover = document.createElement("div");
+        const bookTitle = document.createElement("div");
+        const bookAuthor = document.createElement("div");
+        const bookPages = document.createElement("div");
+
+        bookCover.classList.toggle("book");
+        bookCover.setAttribute('data-index', array.indexOf(book));
+        bookCover.textContent = `${array.indexOf(book)}`;
+
+        bookTitle.classList.toggle("bookTitle");
+        bookTitle.textContent = book.title;
+        bookCover.appendChild(bookTitle);
+
+        bookAuthor.classList.toggle("bookAuthor");
+        bookAuthor.textContent = book.author;
+        bookCover.appendChild(bookAuthor);
+
+        bookPages.classList.toggle("bookPages");
+        bookPages.textContent = book.pages;
+        bookCover.appendChild(bookPages);
+
+        library.appendChild(bookCover);
     })
 }
 

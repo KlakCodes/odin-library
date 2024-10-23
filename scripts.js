@@ -26,30 +26,29 @@ myLibrary.push(ofMiceAndMen);
 myLibrary.push(animalFarm);
 myLibrary.push(hamlet);
 
-function displayLibrary() { 
-    myLibrary.forEach(value => {
-        displayBook(value);
-    })
-}
-
-function displayBook(book) {
+function displayLibrary(array) {
     const library = document.querySelector(".libraryContainer");
-    const div = document.createElement("div");
+
+    library.replaceChildren();
+    array.forEach(book => {
+        const div = document.createElement("div");
         div.classList.toggle("book");
-        div.textContent = `${book.title}\n${book.author}\n${book.pages}`;
+        div.textContent = `${book.title}\n${book.author}\n${book.pages}
+            \n${array.indexOf(book)}`;
         library.appendChild(div);
+    })
 }
 
 function addBookToLibrary(title, author, pages, read) {
     var newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
 
-    displayBook(newBook);
+    displayLibrary(myLibrary);
 
     dialog.close();
 }
 
-displayLibrary();
+displayLibrary(myLibrary);
 
 const newBook = document.querySelector('#new');
 const closeDialog = document.querySelector('.closeDialog');

@@ -19,7 +19,7 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
 const ofMiceAndMen = new Book('Of Mice and Men', 'John Steinbeck', 144, 'Read');
 const animalFarm = new Book('Animal Farm', 'George Orwell', 176, 'Read');
-const hamlet = new Book('Hamlet', 'Shakespeare', 192, 'Unread');
+const hamlet = new Book('Hamlet', 'William Shakespeare', 192, 'Unread');
 const hitchhikerGuide = new Book("The Hitchhiker's Guide to the Galaxy", 'Douglas Adams', 208, 'Unread');
 
 myLibrary.push(theHobbit);
@@ -43,7 +43,6 @@ function displayLibrary(array) {
 
         bookCover.classList.toggle("book");
         bookCover.setAttribute('data-index', array.indexOf(book));
-        // bookCover.textContent = `${array.indexOf(book)}`;
 
         bookTitle.classList.toggle("bookTitle");
         bookTitle.textContent = book.title;
@@ -76,6 +75,7 @@ function displayLibrary(array) {
 
         bookRemove.addEventListener('click', () => {
             console.log(`Delete button ${array.indexOf(book)} has been clicked!`);
+            removeBook(array.indexOf(book));
         })
     })
 }
@@ -91,13 +91,19 @@ function addBookToLibrary(title, author, pages, read) {
 
 function readBook(index, read) {
     let newReadStatus;
-    if(read === 'Unread') {
+    if (read === 'Unread') {
         newReadStatus = 'Read'
     } else {
         newReadStatus = 'Unread'
     };
 
     myLibrary[index].read = newReadStatus;
+
+    displayLibrary(myLibrary);
+}
+
+function removeBook(index) {
+    myLibrary.splice(index, 1);
 
     displayLibrary(myLibrary);
 }
@@ -111,13 +117,13 @@ newBook.addEventListener('click', () => {
     dialog.showModal();
 })
 
-submitBook.addEventListener('click', function(event) {
+submitBook.addEventListener('click', function (event) {
     event.preventDefault();
     var title = document.querySelector('#title').value;
     var author = document.querySelector('#author').value;
     var pages = document.querySelector('#pages').value;
     var read;
-    if(document.querySelector('#read').checked) {
+    if (document.querySelector('#read').checked) {
         read = 'Read'
     } else {
         read = 'Unread'

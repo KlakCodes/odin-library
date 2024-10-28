@@ -7,7 +7,7 @@ function Book(title, author, pages, read) {
     this.read = read;
     this.info = function () {
         let readMessage;
-        if (this.read) {
+        if (this.read === 'Read') {
             readMessage = 'read'
         } else {
             readMessage = 'not read yet'
@@ -16,15 +16,17 @@ function Book(title, author, pages, read) {
     };
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, false);
-const ofMiceAndMen = new Book('Of Mice and Men', 'John Steinbeck', 144, true);
-const animalFarm = new Book('Animal Farm', 'George Orwell', 176, true);
-const hamlet = new Book('Hamlet', 'Shakespeare', 192, false);
+const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
+const ofMiceAndMen = new Book('Of Mice and Men', 'John Steinbeck', 144, 'Read');
+const animalFarm = new Book('Animal Farm', 'George Orwell', 176, 'Read');
+const hamlet = new Book('Hamlet', 'Shakespeare', 192, 'Unread');
+const hitchhikerGuide = new Book("The Hitchhiker's Guide to the Galaxy", 'Douglas Adams', 208, 'Unread');
 
 myLibrary.push(theHobbit);
 myLibrary.push(ofMiceAndMen);
 myLibrary.push(animalFarm);
 myLibrary.push(hamlet);
+myLibrary.push(hitchhikerGuide);
 
 function displayLibrary(array) {
     const library = document.querySelector(".libraryContainer");
@@ -35,10 +37,13 @@ function displayLibrary(array) {
         const bookTitle = document.createElement("div");
         const bookAuthor = document.createElement("div");
         const bookPages = document.createElement("div");
+        const bookRead = document.createElement("button");
+        const bookRemove = document.createElement("button");
+        const imgBin = document.createElement("img");
 
         bookCover.classList.toggle("book");
         bookCover.setAttribute('data-index', array.indexOf(book));
-        bookCover.textContent = `${array.indexOf(book)}`;
+        // bookCover.textContent = `${array.indexOf(book)}`;
 
         bookTitle.classList.toggle("bookTitle");
         bookTitle.textContent = book.title;
@@ -49,8 +54,18 @@ function displayLibrary(array) {
         bookCover.appendChild(bookAuthor);
 
         bookPages.classList.toggle("bookPages");
-        bookPages.textContent = book.pages;
+        bookPages.textContent = `Pages: ${book.pages}`;
         bookCover.appendChild(bookPages);
+
+        bookRead.classList.toggle("bookRead");
+        bookRead.textContent = book.read;
+        bookCover.appendChild(bookRead);
+
+        bookRemove.classList.toggle("bookRemove");
+        bookCover.appendChild(bookRemove);
+
+        imgBin.src = 'images/bin.svg';
+        bookRemove.appendChild(imgBin);
 
         library.appendChild(bookCover);
     })
@@ -81,7 +96,12 @@ submitBook.addEventListener('click', function(event) {
     var title = document.querySelector('#title').value;
     var author = document.querySelector('#author').value;
     var pages = document.querySelector('#pages').value;
-    var read = document.querySelector('#read').value;
+    var read;
+    if(document.querySelector('#read').checked) {
+        read = 'Read'
+    } else {
+        read = 'Unread'
+    };
     addBookToLibrary(title, author, pages, read);
 })
 

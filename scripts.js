@@ -68,6 +68,15 @@ function displayLibrary(array) {
         bookRemove.appendChild(imgBin);
 
         library.appendChild(bookCover);
+
+        bookRead.addEventListener('click', () => {
+            console.log(`Read button ${array.indexOf(book)} has been clicked!`);
+            readBook(array.indexOf(book), book.read);
+        })
+
+        bookRemove.addEventListener('click', () => {
+            console.log(`Delete button ${array.indexOf(book)} has been clicked!`);
+        })
     })
 }
 
@@ -80,7 +89,18 @@ function addBookToLibrary(title, author, pages, read) {
     dialog.close();
 }
 
-displayLibrary(myLibrary);
+function readBook(index, read) {
+    let newReadStatus;
+    if(read === 'Unread') {
+        newReadStatus = 'Read'
+    } else {
+        newReadStatus = 'Unread'
+    };
+
+    myLibrary[index].read = newReadStatus;
+
+    displayLibrary(myLibrary);
+}
 
 const newBook = document.querySelector('#new');
 const closeDialog = document.querySelector('.closeDialog');
@@ -108,3 +128,5 @@ submitBook.addEventListener('click', function(event) {
 closeDialog.addEventListener('click', () => {
     dialog.close();
 })
+
+displayLibrary(myLibrary);

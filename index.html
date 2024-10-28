@@ -18,7 +18,9 @@
     </div>
     <div class="footer">Made by KlakCodes</div>
     <dialog>
-        <button class="closeDialog">x</button>
+        <button class="closeDialog">
+            <img src="images/close.svg" />
+        </button>
         <form id="new_book_form" method="post">
             <div class="form-field">
                 <label for="title">Title</label>
@@ -38,8 +40,9 @@
                 <label for="read">Read</label>
                 <input type="checkbox" id="read" name="read">
             </div>
+        </div>
         </form>
-        <button class="newBook" id="submit" type="submit" form="new_book_form">Submit</button>
+        <button class="newBook" id="submit" type="submit" form="new_book_form">Add book</button>
     </dialog>
 </body>
 <script src="scripts.js"></script>

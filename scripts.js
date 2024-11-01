@@ -14,7 +14,7 @@ function Book(title, author, pages, read) {
         }
         return `${this.title} by ${this.author}, ${this.pages} pages, ${readMessage}`;
     };
-}
+};
 
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
 
@@ -112,13 +112,16 @@ const newBook = document.querySelector('#new');
 const closeDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
 const submitBook = document.querySelector('#submit');
+const newBookForm = document.querySelector('#new_book_form');
 
 newBook.addEventListener('click', () => {
     dialog.showModal();
-})
+});
 
-submitBook.addEventListener('click', function (event) {
-    event.preventDefault();
+newBookForm.addEventListener("submit", function (e) {
+    console.log("TEST 01");
+    e.preventDefault();
+    console.log("TEST 02");
     var title = document.querySelector('#title').value;
     var author = document.querySelector('#author').value;
     var pages = document.querySelector('#pages').value;
@@ -128,8 +131,9 @@ submitBook.addEventListener('click', function (event) {
     } else {
         read = 'Unread'
     };
+
     addBookToLibrary(title, author, pages, read);
-})
+});
 
 closeDialog.addEventListener('click', () => {
     dialog.close();

@@ -15,7 +15,9 @@ body {
     background-color: #FFCF99;
     height: 50px;
     padding: 15px 20px;
-    font-size: 1.5rem;
+    font-family: "Domine";
+    font-size: 2rem;
+    color: #92140C;
     font-weight: 600;
 }
 
@@ -27,6 +29,10 @@ body {
     font-size: 1.2rem;
     border-style: none;
     border-radius: 5px;
+}
+
+.newBook:hover {
+    filter: brightness(120%);
 }
 
 .libraryContainer {
@@ -88,6 +94,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+button:hover {
+    filter: brightness(90%);
 }
 
 .footer {

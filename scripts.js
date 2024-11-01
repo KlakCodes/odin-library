@@ -1,4 +1,8 @@
 const myLibrary = [];
+const newBook = document.querySelector('#new');
+const closeDialog = document.querySelector('.closeDialog');
+const dialog = document.querySelector('dialog');
+const newBookForm = document.querySelector('#new_book_form');
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -108,20 +112,12 @@ function removeBook(index) {
     displayLibrary(myLibrary);
 }
 
-const newBook = document.querySelector('#new');
-const closeDialog = document.querySelector('.closeDialog');
-const dialog = document.querySelector('dialog');
-const submitBook = document.querySelector('#submit');
-const newBookForm = document.querySelector('#new_book_form');
-
 newBook.addEventListener('click', () => {
     dialog.showModal();
 });
 
 newBookForm.addEventListener("submit", function (e) {
-    console.log("TEST 01");
     e.preventDefault();
-    console.log("TEST 02");
     var title = document.querySelector('#title').value;
     var author = document.querySelector('#author').value;
     var pages = document.querySelector('#pages').value;
@@ -133,10 +129,19 @@ newBookForm.addEventListener("submit", function (e) {
     };
 
     addBookToLibrary(title, author, pages, read);
+    resetUserInputs();
 });
+
+function resetUserInputs() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#pages').value = '';
+    document.querySelector('#read').checked = false;
+}
 
 closeDialog.addEventListener('click', () => {
     dialog.close();
+    resetUserInputs();
 })
 
 displayLibrary(myLibrary);

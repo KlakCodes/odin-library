@@ -20,10 +20,12 @@ function Book(title, author, pages, read) {
     };
 };
 
+// Create and display example book on screen
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
-
 myLibrary.push(theHobbit);
+displayLibrary(myLibrary);
 
+// Iterate through each book in the myLibrary array and create visual elements on screen
 function displayLibrary(array) {
     const library = document.querySelector(".libraryContainer");
 
@@ -84,6 +86,7 @@ function displayLibrary(array) {
     })
 }
 
+// Create a new Book object, add it to the array and redisplay the library
 function addBookToLibrary(title, author, pages, read) {
     var newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -93,6 +96,7 @@ function addBookToLibrary(title, author, pages, read) {
     dialog.close();
 }
 
+// Update selected book read status
 function readBook(index, read) {
     let newReadStatus;
     if (read === 'Unread') {
@@ -106,16 +110,19 @@ function readBook(index, read) {
     displayLibrary(myLibrary);
 }
 
+// Remove selected book from library
 function removeBook(index) {
     myLibrary.splice(index, 1);
 
     displayLibrary(myLibrary);
 }
 
+// Show new book form
 newBook.addEventListener('click', () => {
     dialog.showModal();
 });
 
+// Submit inputted data to the addBookToLibrary function
 newBookForm.addEventListener("submit", function (e) {
     e.preventDefault();
     var title = document.querySelector('#title').value;
@@ -132,6 +139,7 @@ newBookForm.addEventListener("submit", function (e) {
     resetUserInputs();
 });
 
+// When called reset all inputs to clear
 function resetUserInputs() {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
@@ -139,9 +147,8 @@ function resetUserInputs() {
     document.querySelector('#read').checked = false;
 }
 
+// Close and reset new book form
 closeDialog.addEventListener('click', () => {
     dialog.close();
     resetUserInputs();
-})
-
-displayLibrary(myLibrary);
+});

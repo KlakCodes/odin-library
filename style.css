@@ -20,7 +20,7 @@ body {
 }
 
 .newBook {
-    width: 100px;
+    width: 150px;
     height: 40px;
     background-color: #92140C;
     color: white;
@@ -111,8 +111,7 @@ dialog[open] {
 }
 
 dialog[open] > .newBook {
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 1.3em;
     width: 150px;
     height: 50px;
     align-self: center;
@@ -124,7 +123,7 @@ dialog::backdrop {
 }
 
 .closeDialog {
-    background-color: #FF6961;
+    background-color: palevioletred;
     color: white;
     font-weight: 600;
     border-style: none;
@@ -140,7 +139,8 @@ dialog::backdrop {
 }
 
 form {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.8px;
 }
 
 input {
@@ -166,5 +166,5 @@ input {
 
 input[type=checkbox] {
     transform: scale(1.4);
-    accent-color: green;
+    accent-color: palegreen;
 }

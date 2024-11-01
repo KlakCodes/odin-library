@@ -40,6 +40,13 @@ function displayLibrary(array) {
         const bookRead = document.createElement("button");
         const bookRemove = document.createElement("button");
         const imgBin = document.createElement("img");
+        let readCol;
+
+        if(book.read === 'Read') {
+            readCol = 'palegreen';
+        } else {
+            readCol = 'palegoldenrod';
+        }
 
         bookCover.classList.toggle("book");
         bookCover.setAttribute('data-index', array.indexOf(book));
@@ -58,6 +65,7 @@ function displayLibrary(array) {
 
         bookRead.classList.toggle("bookRead");
         bookRead.textContent = book.read;
+        bookRead.style.backgroundColor = readCol;
         bookCover.appendChild(bookRead);
 
         bookRemove.classList.toggle("bookRemove");

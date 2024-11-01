@@ -17,16 +17,8 @@ function Book(title, author, pages, read) {
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
-const ofMiceAndMen = new Book('Of Mice and Men', 'John Steinbeck', 144, 'Read');
-const animalFarm = new Book('Animal Farm', 'George Orwell', 176, 'Read');
-const hamlet = new Book('Hamlet', 'William Shakespeare', 192, 'Unread');
-const hitchhikerGuide = new Book("The Hitchhiker's Guide to the Galaxy", 'Douglas Adams', 208, 'Unread');
 
 myLibrary.push(theHobbit);
-myLibrary.push(ofMiceAndMen);
-myLibrary.push(animalFarm);
-myLibrary.push(hamlet);
-myLibrary.push(hitchhikerGuide);
 
 function displayLibrary(array) {
     const library = document.querySelector(".libraryContainer");

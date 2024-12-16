@@ -4,21 +4,14 @@ const closeDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
 const newBookForm = document.querySelector('#new_book_form');
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
-        let readMessage;
-        if (this.read === 'Read') {
-            readMessage = 'read'
-        } else {
-            readMessage = 'not read yet'
-        }
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readMessage}`;
-    };
-};
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
 
 // Create and display example book on screen
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'Unread');
